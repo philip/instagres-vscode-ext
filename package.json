@@ -1,0 +1,84 @@
+{
+  "name": "instagres",
+  "displayName": "Instagres",
+  "description": "Create instant Neon PostgreSQL databases with zero configuration",
+  "version": "0.1.0",
+  "publisher": "philip-projects",
+  "author": {
+    "name": "Philip Olson"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philip/instagres-vscode-ext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/philip/instagres-vscode-ext/issues"
+  },
+  "homepage": "https://github.com/philip/instagres-vscode-ext#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Testing",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "neon",
+    "postgres",
+    "postgresql",
+    "database",
+    "instagres",
+    "serverless"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "instagres.createDatabase",
+        "title": "Create Database",
+        "category": "Instagres"
+      },
+      {
+        "command": "instagres.showHistory",
+        "title": "Show Database History",
+        "category": "Instagres"
+      }
+    ],
+    "configuration": {
+      "title": "Instagres",
+      "properties": {
+        "instagres.keepHistory": {
+          "type": "boolean",
+          "default": true,
+          "description": "Store database history in extension storage"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && node esbuild.js --production",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^10.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "esbuild": "^0.27.2",
+    "eslint": "^8.56.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "uuid": "^10.0.0"
+  }
+}
